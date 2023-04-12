@@ -7,12 +7,13 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+
 /**
  * Servicio de marca coche
  */
 @RequiredArgsConstructor
 @Service
-public class BrandCarService implements IBrandCarService{
+public class BrandCarService implements IBrandCarService {
     /**
      * Repositorio de marca coche
      */
@@ -20,6 +21,7 @@ public class BrandCarService implements IBrandCarService{
 
     /**
      * Devuelve una lista con todas las marcas de coches
+     *
      * @return Lista con marcas de coches
      */
     @Override
@@ -29,6 +31,7 @@ public class BrandCarService implements IBrandCarService{
 
     /**
      * Devuelve una marca de coche dada su id
+     *
      * @param id Id de marca coche
      * @return Optional del marca coche encontrado
      */
@@ -39,6 +42,7 @@ public class BrandCarService implements IBrandCarService{
 
     /**
      * Guarda una nueva marca coche
+     *
      * @param newBrandCar Marca coche a guardar
      * @return Marca coche guardada
      */
@@ -48,17 +52,31 @@ public class BrandCarService implements IBrandCarService{
     }
 
     /**
+     * actualiza una marca copche
+     *
+     * @param newBrandCar marca coche a actualizar
+     * @return optional con marca coche
+     */
+    @Override
+    public Optional<BrandCarPojo> update(BrandCarPojo newBrandCar) {
+        if (iBrandCarRepository.getBrandCar(newBrandCar.getId()).isEmpty()) {
+            return Optional.empty();
+        }
+        return Optional.of(iBrandCarRepository.save(newBrandCar));
+    }
+
+    /**
      * Elimina una marca coche dada su id
+     *
      * @param idBrandCar Id del marca coche a eliminar
      * @return true si se eliminó, false de lo contrario
      */
     @Override
     public boolean delete(Integer idBrandCar) {
-        try {
-            iBrandCarRepository.delete(idBrandCar);
-            return true;
-        } catch (Exception e) {
+        if (iBrandCarRepository.getBrandCar(idBrandCar).isEmpty()) {
             return false;
         }
+        iBrandCarRepository.delete(idBrandCar);
+        return true;
     }
 }
