@@ -1,6 +1,6 @@
 package com.project.coches.controller;
 
-import com.project.coches.domain.pojo.BrandCarPojo;
+import com.project.coches.domain.dto.BrandCarDto;
 import com.project.coches.domain.service.IBrandCarService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -14,7 +14,7 @@ import java.util.List;
  */
 @RequiredArgsConstructor
 @RestController
-@RequestMapping(path = "/marcas-coches")
+@RequestMapping(path = "/brand-car")
 public class BrandCarController {
     /**
      * Servicio de marca coche
@@ -27,7 +27,7 @@ public class BrandCarController {
      * @return HttpCode con lista de marcas coche
      */
     @GetMapping()
-    public ResponseEntity<List<BrandCarPojo>> getAll() {
+    public ResponseEntity<List<BrandCarDto>> getAll() {
         return ResponseEntity.ok(iBrandCarService.getAll());
         // return ResponseEntity.status(HttpStatus.)
         //        .body(iBrandCarService.getAll()); ALTERNATIVA PARA CREAR RESPONSE_ENTITY
@@ -42,21 +42,21 @@ public class BrandCarController {
      * @return HttpCode OK si encuentra la marca de coche, NOTFOUND de lo contrario.
      */
     @GetMapping(path = "/{id}")
-    public ResponseEntity<BrandCarPojo> getBrandCar(@PathVariable Integer id) {
+    public ResponseEntity<BrandCarDto> getBrandCar(@PathVariable Integer id) {
         return ResponseEntity.of(iBrandCarService.getBrandCar(id));
     }
 
     /**
      * crea una nueva marca coche
      *
-     * @param brandCarPojoNew marca coche a crear
+     * @param brandCarDtoNew marca coche a crear
      * @return create si la guarda exitosamente, BadRequest si no es asi.
      */
     @PostMapping
-    public ResponseEntity<BrandCarPojo> save(@RequestBody BrandCarPojo brandCarPojoNew) {
+    public ResponseEntity<BrandCarDto> save(@RequestBody BrandCarDto brandCarDtoNew) {
         try {
             return ResponseEntity.status(HttpStatus.CREATED)
-                    .body(iBrandCarService.save(brandCarPojoNew));
+                    .body(iBrandCarService.save(brandCarDtoNew));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
@@ -65,12 +65,12 @@ public class BrandCarController {
     /**
      * actualiza una marca coche
      *
-     * @param brandCarPojoUpdate marca de coche a actualizar
+     * @param brandCarDtoUpdate marca de coche a actualizar
      * @return HttpCode OK si actualiza correctamente.
      */
     @PatchMapping
-    public ResponseEntity<BrandCarPojo> update(@RequestBody BrandCarPojo brandCarPojoUpdate) {
-        return ResponseEntity.of(iBrandCarService.update(brandCarPojoUpdate));
+    public ResponseEntity<BrandCarDto> update(@RequestBody BrandCarDto brandCarDtoUpdate) {
+        return ResponseEntity.of(iBrandCarService.update(brandCarDtoUpdate));
     }
 
     /**

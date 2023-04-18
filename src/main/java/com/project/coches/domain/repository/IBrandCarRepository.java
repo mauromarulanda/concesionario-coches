@@ -1,17 +1,20 @@
 package com.project.coches.domain.repository;
 
-import com.project.coches.domain.pojo.BrandCarPojo;
+import com.project.coches.domain.dto.BrandCarDto;
 
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * interface del repositorio de marca coche
+ */
 public interface IBrandCarRepository {
     /**
      * devuelve todas las marcas de coche en una lista
      *
      * @return lista de marcas de coche
      */
-    List<BrandCarPojo> getAll();
+    List<BrandCarDto> getAll();
 
     /**
      * devuelve una marca de coche dado su id
@@ -19,7 +22,7 @@ public interface IBrandCarRepository {
      * @param id id de marca de coche
      * @return optional de una marca de coche encontrada
      */
-    Optional<BrandCarPojo> getBrandCar(Integer id);
+    Optional<BrandCarDto> getBrandCar(Integer id);
 
     /**
      * guarda una nueva marca de coche
@@ -27,7 +30,7 @@ public interface IBrandCarRepository {
      * @param newBrandCar marca de coche a guardar
      * @return marca de coche guardada
      */
-    BrandCarPojo save(BrandCarPojo newBrandCar);
+    BrandCarDto save(BrandCarDto newBrandCar);
 
     /**
      * elimina una marca de coche dada su id
