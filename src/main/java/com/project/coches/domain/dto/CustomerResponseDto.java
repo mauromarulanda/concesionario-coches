@@ -7,6 +7,6 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class ResponseCustomerDto {
+public class CustomerResponseDto {
     private String password;
 }

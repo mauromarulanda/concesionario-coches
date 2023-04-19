@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 /**
  * Entidad de un cliente
  */
@@ -43,5 +45,13 @@ public class CustomerEntity {
      */
     @Column(name = "activo")
     private Integer active;
+
+    /**
+     * rol del cliente
+     */
+    private String rol;
+
+    @OneToMany(mappedBy = "customerEntity")
+    private List<PurchaseEntity> purchaseEntity;
 
 }

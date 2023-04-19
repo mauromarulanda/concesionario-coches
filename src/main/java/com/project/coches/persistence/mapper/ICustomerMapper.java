@@ -3,6 +3,7 @@ package com.project.coches.persistence.mapper;
 import com.project.coches.domain.dto.CustomerDto;
 import com.project.coches.persistence.entity.CustomerEntity;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 import java.util.List;
 
@@ -24,6 +25,7 @@ public interface ICustomerMapper {
      * @param customerDto dto a convertir
      * @return entidad convertida
      */
+    @Mapping(target = "purchaseEntity", ignore = true)
     CustomerEntity toCustomerEntity(CustomerDto customerDto);
 
     /**

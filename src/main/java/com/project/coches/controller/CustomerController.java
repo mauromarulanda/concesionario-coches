@@ -1,7 +1,7 @@
 package com.project.coches.controller;
 
 import com.project.coches.domain.dto.CustomerDto;
-import com.project.coches.domain.dto.ResponseCustomerDto;
+import com.project.coches.domain.dto.CustomerResponseDto;
 import com.project.coches.domain.useCase.ICustomerUseCase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -55,7 +55,7 @@ public class CustomerController {
      * @return cliente guardado
      */
     @PostMapping
-    public ResponseEntity<ResponseCustomerDto> save(@RequestBody CustomerDto customerDtoNew) {
+    public ResponseEntity<CustomerResponseDto> save(@RequestBody CustomerDto customerDtoNew) {
             return ResponseEntity.status(HttpStatus.CREATED)
                     .body(iCustomerUseCase.save(customerDtoNew));
     }

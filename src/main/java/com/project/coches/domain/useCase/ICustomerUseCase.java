@@ -1,7 +1,7 @@
 package com.project.coches.domain.useCase;
 
 import com.project.coches.domain.dto.CustomerDto;
-import com.project.coches.domain.dto.ResponseCustomerDto;
+import com.project.coches.domain.dto.CustomerResponseDto;
 
 import java.util.List;
 import java.util.Optional;
@@ -39,7 +39,7 @@ public interface ICustomerUseCase {
      * @param newCustomer cliente a guardar
      * @return cliente guardado
      */
-    ResponseCustomerDto save(CustomerDto newCustomer);
+    CustomerResponseDto save(CustomerDto newCustomer);
 
     /**
      * actualiza informacion de un cliente

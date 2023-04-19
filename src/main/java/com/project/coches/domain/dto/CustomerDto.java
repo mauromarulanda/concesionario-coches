@@ -6,7 +6,8 @@ import lombok.Setter;
 /**
  * dto de un cliente
  */
-@Getter @Setter
+@Getter
+@Setter
 public class CustomerDto {
     /**
      * id del cliente
@@ -32,9 +33,14 @@ public class CustomerDto {
      * estado del cliente
      */
     private Integer active;
+    /**
+     * rol del customer
+     */
+    private String rol;
 
     /**
      * tostring de customerDTO
+     *
      * @return customerDTO
      */
     @Override
@@ -46,6 +52,7 @@ public class CustomerDto {
                 ", password='" + password + '\'' +
                 ", numberCellphone=" + numberCellphone +
                 ", active=" + active +
+                ", rol=" + rol +
                 '}';
     }
 }

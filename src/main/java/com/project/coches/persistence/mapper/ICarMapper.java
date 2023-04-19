@@ -25,6 +25,7 @@ public interface ICarMapper {
      * @return entidad convertida
      */
     @Mapping(target = "brandCarEntity", ignore = true)
+    @Mapping(target = "carPurchaseEntity", ignore = true)
     CarEntity toCarEntity(CarDto carDto);
 
     /**
