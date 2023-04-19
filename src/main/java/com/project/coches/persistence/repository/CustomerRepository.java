@@ -2,6 +2,7 @@ package com.project.coches.persistence.repository;
 
 import com.project.coches.domain.dto.CustomerDto;
 import com.project.coches.domain.repository.ICustomerRepository;
+import com.project.coches.persistence.crud.ICustomerCrudRepository;
 import com.project.coches.persistence.mapper.ICustomerMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -24,6 +25,7 @@ public class CustomerRepository implements ICustomerRepository {
      */
     @Override
     public List<CustomerDto> getAll() {
+
         return iCustomerMapper.toCustomersDto(iCustomerCrudRepository.findAll());
     }
 
@@ -35,7 +37,8 @@ public class CustomerRepository implements ICustomerRepository {
      */
     @Override
     public Optional<CustomerDto> getCustomerByCardId(String carId) {
-        return iCustomerCrudRepository.findById(carId).map(iCustomerMapper::toCustomerDto);
+        return iCustomerCrudRepository.findById(carId).map(
+                iCustomerMapper::toCustomerDto);
     }
 
     /**
@@ -46,7 +49,8 @@ public class CustomerRepository implements ICustomerRepository {
      */
     @Override
     public Optional<CustomerDto> getCustomerByEmail(String email) {
-        return iCustomerCrudRepository.findByEmail(email).map(iCustomerMapper::toCustomerDto);
+        return iCustomerCrudRepository.findByEmail(email)
+                .map(iCustomerMapper::toCustomerDto);
     }
 
     /**
@@ -57,7 +61,9 @@ public class CustomerRepository implements ICustomerRepository {
      */
     @Override
     public CustomerDto save(CustomerDto newCustomer) {
-        return iCustomerMapper.toCustomerDto(iCustomerCrudRepository.save(iCustomerMapper.toCustomerEntity(newCustomer)));
+        return iCustomerMapper.toCustomerDto
+                (iCustomerCrudRepository.save(iCustomerMapper.
+                        toCustomerEntity(newCustomer)));
     }
 
     /**

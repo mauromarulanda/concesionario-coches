@@ -1,6 +1,5 @@
 package com.project.coches.domain.repository;
 
-import com.project.coches.domain.dto.BrandCarDto;
 import com.project.coches.domain.dto.CustomerDto;
 
 import java.util.List;
